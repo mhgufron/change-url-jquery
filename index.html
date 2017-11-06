@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Change URL Jquery </title>
+</head>
+<body>
+    <div id="menu">
+        <a rel="tab" href="http://localhost/custom-url/menu1" >Menu1 </a>
+        <a rel="tab" href="http://localhost/custom-url/menu2" >Menu2 </a>
+        <a rel="tab" href="http://localhost/custom-url/menu3" >Menu3 </a>
+    </div>
+    <div class="content"></div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script>
+    $(function() {
+        $("a[rel='tab']").click(function(e) {
+            pageurl = $(this).attr('href');
+
+            $.ajax({url:page + '?rel=tab', success:function(data) {
+                $('#content').html(data);
+            }});
+
+            if (pageurl !== window.location) {
+                window.history.pushState({path:pageurl}, '', pageurl);
+            }
+            return false;
+        });
+    });
+
+    $(window).bind('popsate', function() {
+        $.ajax({url:location.pathname + '?rel=tab', success: function(data){
+            $('#content').html(data);
+        }});
+    });
+    </script>
+
+</body>
+</html>
