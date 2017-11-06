@@ -9,12 +9,12 @@
         <a rel="tab" href="https://mhgufron.github.io/change-url-jquery/menu2" >Menu2 </a>
         <a rel="tab" href="https://mhgufron.github.io/change-url-jquery/menu3" >Menu3 </a>
     </div>
-    <div class="content"></div>
+    <div id="content"></div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script>
     $(function() {
-        $("a[rel='tab']").click(function(e) {
+        $("a[rel='tab']").click(function() {
             pageurl = $(this).attr('href');
 
             $.ajax({url:page + '?rel=tab', success:function(data) {
