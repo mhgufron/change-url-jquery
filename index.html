@@ -18,7 +18,7 @@
             e.preventDefault();
             pageurl = $(this).attr('href');
 
-            $.ajax({url:page + '?rel=tab', success:function(data) {
+            $.ajax({url:pageurl + '?rel=tab', success:function(data) {
                 $('#content').html(data);
             }});
 
